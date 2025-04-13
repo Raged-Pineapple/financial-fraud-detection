@@ -1,0 +1,6 @@
+Flask==2.0.1
+Flask-Cors==3.0.10
+python-dotenv==0.19.1
+pymongo==4.0.1
+# Uncomment below if using Firebase
+# firebase-admin==5.0.3
