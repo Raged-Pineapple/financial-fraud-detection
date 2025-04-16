@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fraud Detection Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Font Awesome for improved icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/shield.svg" alt="Shield icon">
+      <h1>Fraud Detection Dashboard</h1>
+    </div>
+    <div class="notification-bell">
+      <i class="fas fa-bell"></i>
+    </div>
+  </header>
+  
+  <main>
+    <!-- Dashboard Stats Cards -->
+    <section class="stats-cards">
+      <div class="card">
+        <div class="card-content">
+          <h3>Total Flagged Transactions</h3>
+          <div class="stat-value">
+            <span id="total-flagged">-</span>
+            <span class="change positive" id="total-flagged-change">+0.00%</span>
+          </div>
+        </div>
+        <div class="card-icon warning"></div>
+      </div>
+      
+      <div class="card">
+        <div class="card-content">
+          <h3>Average Detection Score</h3>
+          <div class="stat-value">
+            <span id="avg-detection-score">-</span>
+            <span class="change positive" id="avg-score-change">+0.00%</span>
+          </div>
+        </div>
+        <div class="card-icon trend"></div>
+      </div>
+      
+      <div class="card">
+        <div class="card-content">
+          <h3>Review Time</h3>
+          <div class="stat-value">
+            <span id="review-time">-</span>
+            <span class="change negative" id="review-time-change">+0.00%</span>
+          </div>
+        </div>
+        <div class="card-icon clock"></div>
+      </div>
+      
+      <div class="card">
+        <div class="card-content">
+          <h3>Most Common Tag</h3>
+          <div class="stat-value">
+            <span id="most-common-tag">-</span>
+            <span class="change positive" id="common-tag-change">+0.00%</span>
+          </div>
+        </div>
+        <div class="card-icon tag"></div>
+      </div>
+    </section>
+    
+    <!-- Flagged Accounts Table -->
+    <section class="flagged-accounts">
+      <div class="section-header">
+        <h2><span class="shield-icon"></span> Flagged Accounts</h2>
+        <div class="actions">
+          <button id="export-data">Export Data</button>
+          <button id="refresh-data">Refresh</button>
+        </div>
+      </div>
+      
+      <table id="flagged-table">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Transaction ID</th>
+            <th>Amount</th>
+            <th>Detection Score</th>
+            <th>Reason</th>
+            <th>Reviewed By</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="flagged-transactions-body">
+          <!-- Transaction rows will be inserted here -->
+        </tbody>
+      </table>
+    </section>
+    
+    <!-- Charts Section -->
+    <div class="chart-container" data-title="Suspicious Activity Trends">
+      <canvas id="activity-chart"></canvas>
+    </div>
+    <div class="chart-container" data-title="Fraud Types Distribution">
+      <canvas id="fraud-types-chart"></canvas>
+    </div>
+    
+  </main>
+  
+  <script src="js/api.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

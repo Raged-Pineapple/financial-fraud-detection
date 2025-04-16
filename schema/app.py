@@ -3,9 +3,17 @@ from faker import Faker
 import random
 import uuid
 from datetime import datetime
+from pymongo import MongoClient
+import os
 
 app = Flask(__name__)
 fake = Faker()
+
+# MongoDB Atlas connection setup
+MONGO_URI = 'mongodb+srv://sushmaaditya717:rdqdcaYTLY7p50za@adityaadi.vztbe.mongodb.net/mern_1_db'
+client = MongoClient(MONGO_URI)
+db = client["telnet"]  # Replace with your database name
+collection = db["report"]  # Collection to store reports
 
 def generate_fraud_report():
     return {
@@ -37,10 +45,21 @@ def generate_fraud_report():
         "created_at": datetime.utcnow().isoformat() + "Z"
     }
 
-@app.route('/fraud-report', methods=['GET'])
-def get_fraud_report():
+def save_to_mongodb(report):
+    # Insert the generated report into MongoDB
+    collection.insert_one(report)
+
+def generate_and_save_report():
     report = generate_fraud_report()
+    save_to_mongodb(report)  # Save the report to MongoDB
+    print("Report generated and saved to MongoDB")
+
+@app.route("/generate_report", methods=["GET"])
+def generate_and_save_report_api():
+    report = generate_fraud_report()
+    save_to_mongodb(report)
     return jsonify(report)
 
-if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+if __name__ == "__main__":
+    generate_and_save_report()  # Automatically generate and save the report when the app starts
+    app.run(debug=True)

@@ -1,0 +1,16 @@
+{
+    "name": "crypto-fraud-dashboard-frontend",
+    "version": "1.0.0",
+    "description": "Frontend for Cryptocurrency Fraud Detection Dashboard",
+    "private": true,
+    "scripts": {
+      "start": "http-server -p 8080",
+      "dev": "http-server -p 8080 -c-1"
+    },
+    "devDependencies": {
+      "http-server": "^14.1.1"
+    },
+    "dependencies": {
+      "chart.js": "^4.4.0"
+    }
+  }

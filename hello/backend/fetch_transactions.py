@@ -9,5 +9,5 @@ def fetch_recent_transactions(account_id, limit=100):
     return transactions
 
 # Replace with your test account public key
-test_account = "GDIMPUYW4K5HDZZSTOBJUS4U2GGYRWRAOCMHE3FRG7P25X5VZJ2B4VBO"
+test_account = "GBP2HSPNJ3IIXTESJVL4A2Z6UJD3VC6ALQEZPTFRIE4R35PVTQEQKWYL"
 fetch_recent_transactions(test_account)
